@@ -1,0 +1,16 @@
+/*
+ * Theme Name:   Deverati
+ * Theme URI:    https://github.com/benedict-w/deverati
+ * Template:     pressgang
+ * Description:  Web Developer Wordpress child theme for pressgang.
+ * Author:       Benedict Wallis
+ * Author URI:   http://www.benedict-wallis.com
+ * Author Email: ben@benedict-wallis.com
+ * Version:      1.0.0
+ * Licenses:     GPLv2+
+ * License URI:  http://www.gnu.org/licenses/gpl-2.0.html
+ * Text Domain:  Deverati
+ * Domain Path:  /lang
+ */
+
+@import "css/styles.css";
