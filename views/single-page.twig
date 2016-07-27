@@ -1,0 +1,22 @@
+{% extends "base.twig" %}
+
+{% block main %}
+    {% block content %}
+        {% for page in pages %}
+        <div class="container{% if page.post_name in ['home', 'contact', 'case-studies'] %}-fluid{% endif %}">
+            <div class="row">
+                <div class="col-xs-12">
+                    <section id="{{ page.post_name }}" class="page">
+                        <h1 class="page-title" title="{{ page.title }}">{{ page.title }}</h1>
+                        <div class="page-body">
+                            <div class="page-content">
+                                {{ page.content }}
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    {% endblock %}
+{% endblock %}
