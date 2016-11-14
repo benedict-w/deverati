@@ -3,11 +3,11 @@
 {% block main %}
     {% block content %}
         {% for page in pages %}
-        <div class="container{% if page.post_name in ['home', 'contact', 'case-studies'] %}-fluid{% endif %}">
+        <div class="container{% if page.post_name in ['home', 'contact'] %}-fluid{% endif %}">
             <div class="row">
                 <div class="col-xs-12">
                     <section id="{{ page.post_name }}" class="page">
-                        <h1 class="page-title" title="{{ page.title }}">{{ page.title }}</h1>
+                        <h2 class="page-title" title="{{ page.title }}">{{ page.title }}</h2>
                         <div class="page-body">
                             <div class="page-content">
                                 {{ page.content }}

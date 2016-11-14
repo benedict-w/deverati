@@ -1,0 +1,45 @@
+{% extends "page.twig" %}
+
+{% block content %}
+
+    {% block before_archive %}
+        <div class="row">
+            <div class="col-sm-12">
+                <h2 class="page-title">{{ page_title|e }}</h2>
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block archive %}
+        {% if posts|length %}
+            {% for post in posts %}
+                {% if loop.index0 is even %}
+                    <div class="row infinite-container">
+                {% endif %}
+                    <div class="col-md-6">
+                        {% include 'project-preview.twig' %}
+                    </div>
+                {% if loop.index0 is odd or loop.last %}
+                    </div>
+                {% endif %}
+            {% endfor %}
+        {% else %}
+            <div class="row">
+                <div class="col-xs-12">
+                    {% include 'no-posts.twig' %}
+                </div>
+            </div>
+        {% endif %}
+    {% endblock %}
+
+    {% block pagination %}
+        {% if posts|length %}
+            <div class="row">
+                <div class="col-xs-12">
+                    {% include 'pagination.twig' %}
+                </div>
+            </div>
+        {% endif %}
+    {% endblock %}
+
+{% endblock %}

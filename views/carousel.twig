@@ -1,0 +1,13 @@
+<!-- slideshow -->
+<div id="slideshow" data-slick="">
+    {% for slide in slides %}
+        <div style="background-image: url({{ slide.thumbnail.src|resize(1900)|relative }})">
+            <div class="slide-caption">
+                <h2 class="slide-title">{{ slide.post_title }}</h2>
+                <div class="slide-content">
+                    {{ slide.content }}
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+</div>

@@ -7,46 +7,53 @@ namespace Deverati;
  *
  * @package Deverati
  */
-class Projects {
+class Projects extends \Pressgang\Shortcode
+{
 
     /**
-     * Initialize
+     * __construct
      *
      */
-    public static function init () {
-        add_shortcode('projects', array('Deverati\Projects', 'do_shortcode'));
+    public function __construct() {
         add_filter('slick_slide', array('Deverati\Projects', 'add_slide_tags'));
+
+        parent::__construct();
     }
 
     /**
-     * Projects
+     * do_shortcode
      *
      * @return string
      */
-    public static function do_shortcode() {
+    public function do_shortcode($atts, $content = null) {
 
         $args = array(
             'post_type' => 'project',
             'posts_per_page' => -1,
-            // 'post__in'  => get_option('sticky_posts'),
-            // 'ignore_sticky_posts' => 1,
             // has thumbnail
             'meta_query' => array(
                 array(
                     'key' => '_thumbnail_id',
                     'compare' => 'EXISTS'
                 ),
+                array(
+                    'key' => 'featured',
+                    'value' => '1',
+                    'compare' => '=='
+                ),
             )
         );
 
         $slick = array(
             'dots' => true,
+            'arrows' => false,
             'slidesToShow' => 1,
             'slidesToScroll' => 1,
+            'adaptiveHeight' => true,
             'autoplay' => true,
         );
 
-        return \Pressgang\Carousel::render($args, 400, 500, $slick);
+        return \Pressgang\Carousel::render('projects-slick.twig', $args, 485, 300, $slick);
     }
 
     /**
@@ -68,4 +75,4 @@ class Projects {
     }
 }
 
-Projects::init();
+new Projects();

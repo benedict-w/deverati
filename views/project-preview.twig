@@ -1,0 +1,24 @@
+<article class="project-preview">
+    <header>
+        <h2 class="project-title">
+            <a href="{{ post.link|e('html_attr') }}" rel="bookmark">{{ post.title }}</a>
+        </h2>
+    </header>
+    <div class="project-body">
+        {% if post.thumbnail %}
+            <a href="{{ post.link }}" rel="bookmark" class="project-thumbnail">
+                {% include 'img.twig' with { 'src': post.thumbnail.src('thumbnail')|relative, 'alt': post.title } %}
+            </a>
+        {% endif %}
+        <div class="project-excerpt">
+            {{ post.get_preview(40, false, __("Read more", THEMENAME)) }}
+        </div>
+        <ul class="project-technologies">
+            {% for technology in post.terms('technology') %}
+                <li>
+                    <a href="{{ technology.link }}"><span class="fa fa-hashtag"></span> {{ technology.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+</article>

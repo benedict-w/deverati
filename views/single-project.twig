@@ -1,0 +1,12 @@
+{% extends "page.twig" %}
+
+{% block content %}
+    {% embed('post.twig') %}
+        {% block after_post_content %}
+            {% include('post-meta.twig') with {'author': false, 'time': false} %}
+            {% include('post-tags.twig') with {'taxonomy': 'technology', 'title': "Technologies"} %}
+            {% include('post-tags.twig') %}
+            {% include('post-nav.twig') %}
+        {% endblock %}
+    {% endembed %}
+{% endblock %}

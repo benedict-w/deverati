@@ -13,22 +13,25 @@ return array (
      *
      */
     'inc' => array(
-        // 'addthis',
         'admin-logo',
-        // 'breadcrumbs',
         'customizer',
         'emojicons',
         'filters',
         'gallery',
         'google-analytics',
+        'google-webmaster',
+        'bing',
         'images',
-        // 'infinitepagination',
+        'breadcrumb',
+        // 'infinite-pagination',
         'opengraph',
         'permalinks',
-        // 'require-featured-image',
         'sitemap',
         'slider',
         'title',
+    ),
+
+    'shortcodes' => array(
         'projects',
     ),
 
@@ -51,7 +54,13 @@ return array (
      *
      * @var array
      */
-    'widgets' => array(),
+    'sidebars' => array(
+        'sidebar' => array(
+            'name' => __("Sidebar", THEMENAME),
+            'id' => 'sidebar',
+            'description' => __("Sidebar Widget Area", THEMENAME),
+        ),
+    ),
 
     /*
      * actions
@@ -87,6 +96,12 @@ return array (
             'version' => '3.2.0',
             'in_footer' => true,
         ),
+        'scrolling' => array(
+            'src' => get_template_directory_uri() . '/js/src/custom/scrolling.js',
+            'deps' => array('jquery'),
+            'version' => '0.1',
+            'in_footer' => true,
+        ),
     ),
 
     /*
@@ -108,7 +123,7 @@ return array (
             'hierarchical' => true,
             'menu_position' => 20,
             'supports' => array('title', 'editor', 'thumbnail', 'gallery', 'excerpt', 'comments', 'custom-fields', 'tags'),
-            'taxonomies' => array('skill', 'company', 'technology'),
+            'taxonomies' => array('skill', 'company', 'technology', 'category', 'post_tag'),
         ),
     ),
 
@@ -124,6 +139,7 @@ return array (
         'company' => array (
             'object-type' => 'project',
             'args' => array(
+                'public' => false,
                 'hierarchical' => true,
                 'show_ui' => true,
                 'query_var' => true,
@@ -142,17 +158,6 @@ return array (
                     'with_front' => true,
                 ),
             ),
-
-        ),
-        'skill' => array (
-            'object-type' => 'project',
-            'args' =>  array(
-                'rewrite' => array(
-                    'slug' => __('skills', THEMENAME),
-                    'with_front' => true,
-                ),
-            ),
-
         ),
     ),
 
