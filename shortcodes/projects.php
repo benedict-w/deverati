@@ -52,10 +52,12 @@ class Projects extends \Pressgang\Shortcode
             'adaptiveHeight' => true,
             'autoplay' => true,
             'responsive' => array(
-                'breakpoint' => 480,
-                'settings' => array(
-                    'dots' => false,
-                    'arrows' => false,
+                array(
+                    'breakpoint' => 480,
+                    'settings' => array(
+                        'dots' => false,
+                        'arrows' => false,
+                    ),
                 ),
             ),
         );

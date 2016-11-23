@@ -2,21 +2,21 @@
 
 {% block main %}
     {% block content %}
-        {% for page in pages %}
-        <div class="container{% if page.post_name in ['home', 'contact'] %}-fluid{% endif %}">
-            <div class="row">
-                <div class="col-xs-12">
-                    <section id="{{ page.post_name }}" class="page">
-                        <h2 class="page-title" title="{{ page.title }}">{{ page.title }}</h2>
-                        <div class="page-body">
-                            <div class="page-content">
-                                {{ page.content }}
+        {% for page in pages if page.post_name != '' %}
+            <section id="{{ page.post_name }}" class="page">
+                <div class="container{% if page.post_name in ['home'] %}-fluid{% endif %}">
+                    <div class="row">
+                        <div class="col-xs-12">
+                            <h2 class="page-title" title="{{ page.title }}">{{ page.title }}</h2>
+                            <div class="page-body">
+                                <div class="page-content">
+                                    {{ page.content }}
+                                </div>
                             </div>
                         </div>
-                    </section>
+                    </div>
                 </div>
-            </div>
-        </div>
+            </section>
         {% endfor %}
     {% endblock %}
 {% endblock %}
