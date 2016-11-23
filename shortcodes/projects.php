@@ -46,11 +46,18 @@ class Projects extends \Pressgang\Shortcode
 
         $slick = array(
             'dots' => true,
-            'arrows' => false,
+            'arrows' => true,
             'slidesToShow' => 1,
             'slidesToScroll' => 1,
             'adaptiveHeight' => true,
             'autoplay' => true,
+            'responsive' => array(
+                'breakpoint' => 480,
+                'settings' => array(
+                    'dots' => false,
+                    'arrows' => false,
+                ),
+            ),
         );
 
         return \Pressgang\Carousel::render('projects-slick.twig', $args, 485, 300, $slick);

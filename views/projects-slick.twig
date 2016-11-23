@@ -7,7 +7,7 @@
                 <img src="{{ thumbnail.src|resize(slide.width)|relative|e('html_attr') }}" alt="{{ slide.post_title|e('html_attr') }}" class="img-responsive">
             </a>
             <div class="slick-caption">
-                <h2 class="slick-title">
+                <h3 class="slick-title">
                     {% if slide.slide_url %}
                     <a href="{{ slide.slide_url }}" title="{{ slide.post_title|e('html_attr') }}">
                         {% endif %}
@@ -15,7 +15,7 @@
                         {% if slide.slide_url %}
                     </a>
                     {% endif %}
-                </h2>
+                </h3>
                 {% if slide.content %}
                     <div class="slick-content">
                         {{ slide.content }}
@@ -32,3 +32,6 @@
         </div>
     {% endfor %}
 </div>
+
+<a href="/projects" class="btn btn-default">See more projects</a>
+

@@ -29,6 +29,7 @@ return array (
         'sitemap',
         'slider',
         'title',
+        'addthis',
     ),
 
     'shortcodes' => array(
@@ -59,6 +60,10 @@ return array (
             'name' => __("Sidebar", THEMENAME),
             'id' => 'sidebar',
             'description' => __("Sidebar Widget Area", THEMENAME),
+            'before_widget' => "<div class=\"widget\">",
+            'after_widget' => "</div>",
+            'before_title' => "<h4 class=\"widget-title\">",
+            'after_title' => "</h4>",
         ),
     ),
 
@@ -69,7 +74,9 @@ return array (
      *
      * @var array
      */
-    'actions' => array(),
+    'actions' => array(
+        'after_post_header' => array('PressGang\AddThis', 'button'),
+    ),
 
     /*
      * templates

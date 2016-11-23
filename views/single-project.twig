@@ -2,11 +2,15 @@
 
 {% block content %}
     {% embed('post.twig') %}
+        {% block after_post_header %}
+            {% do action('after_post_header') %}
+        {% endblock %}
         {% block after_post_content %}
             {% include('post-meta.twig') with {'author': false, 'time': false} %}
             {% include('post-tags.twig') with {'taxonomy': 'technology', 'title': "Technologies"} %}
             {% include('post-tags.twig') %}
             {% include('post-nav.twig') %}
+            {% do action('after_single_project_content') %}
         {% endblock %}
     {% endembed %}
 {% endblock %}

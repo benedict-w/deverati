@@ -66,6 +66,18 @@ a {
 
   aside.sidebar {
     margin-top: @grid-gutter-width;
+    .widget {
+      padding-bottom: @grid-gutter-width;
+      margin-bottom: @grid-gutter-width;
+      border-bottom: 1px dotted @brand-primary;
+      &:last-child {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
+      .widget-title {
+        text-align: left;
+      }
+    }
   }
 }
 
@@ -160,6 +172,10 @@ body.home {
         display: block;
         color: @contact-color;
       }
+      .btn {
+        .pull-right;
+        margin: @grid-gutter-width * 1.5 0 @grid-gutter-width 0;
+      }
     }
     &#contact {
       padding: @grid-gutter-width 0;
@@ -205,6 +221,20 @@ ul.project-technologies {
       .img-responsive;
       margin: @grid-gutter-width / 2 auto;
     }
+  }
+}
+
+.single-project {
+  #main {
+    .post-title {
+      text-align: left;
+    }
+  }
+  .post-header,
+  .post-content,
+  .post-meta,
+  .tag-list {
+    margin-bottom: @grid-gutter-width;
   }
 }
 

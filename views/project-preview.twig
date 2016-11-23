@@ -11,7 +11,7 @@
             </a>
         {% endif %}
         <div class="project-excerpt">
-            {{ post.get_preview(40, false, __("Read more", THEMENAME)) }}
+            {{ post.get_preview(40, false, __("Read more about %s", THEMENAME)|format(post.title)) }}
         </div>
         <ul class="project-technologies">
             {% for technology in post.terms('technology') %}
