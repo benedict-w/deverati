@@ -30,6 +30,7 @@ return array (
         'slider',
         'title',
         'addthis',
+        'structured-data-search',
     ),
 
     'shortcodes' => array(
@@ -130,7 +131,7 @@ return array (
             'hierarchical' => true,
             'menu_position' => 20,
             'supports' => array('title', 'editor', 'thumbnail', 'gallery', 'excerpt', 'comments', 'custom-fields', 'tags'),
-            'taxonomies' => array('skill', 'company', 'technology', 'category', 'post_tag'),
+            'taxonomies' => array('skill', 'company', 'technology', 'project_type'),
         ),
     ),
 
@@ -146,12 +147,12 @@ return array (
         'company' => array (
             'object-type' => 'project',
             'args' => array(
-                'public' => false,
+                'public' => true,
                 'hierarchical' => true,
                 'show_ui' => true,
                 'query_var' => true,
                 'rewrite' => array(
-                    'slug' => __('companies', THEMENAME),
+                    'slug' => __('companies', 'taxonomy slug', THEMENAME),
                     'with_front' => true,
                     'hierarchical' => true,
                 ),
@@ -161,7 +162,20 @@ return array (
             'object-type' => 'project',
             'args' =>  array(
                 'rewrite' => array(
-                    'slug' => __('technologies', THEMENAME),
+                    'slug' => __('technologies', 'taxonomy slug', THEMENAME),
+                    'with_front' => true,
+                ),
+            ),
+        ),
+        'project_type' => array (
+            'object-type' => 'project',
+            'args' =>  array(
+                'public' => true,
+                'hierarchical' => true,
+                'show_ui' => true,
+                'query_var' => true,
+                'rewrite' => array(
+                    'slug' => __('project-type', 'taxonomy slug', THEMENAME),
                     'with_front' => true,
                 ),
             ),
