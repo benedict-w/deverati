@@ -1,16 +1,42 @@
 {% extends "page.twig" %}
 
 {% block content %}
-    {% embed('post.twig') %}
-        {% block after_post_header %}
-            {% do action('after_post_header') %}
-        {% endblock %}
-        {% block after_post_content %}
-            {% include('post-meta.twig') with {'author': false, 'time': false} %}
+    <article itemscope itemtype="http://schema.org/CreativeWork">
+        <meta itemprop="creator" content="{{ site.url }}">
+        <header class="post-header">
+            <h1 class="post-title" itemprop="headline">{{ post.title }}</h1>
+        </header>
+        <div class="post-body">
+            {% if post.thumbnail %}
+                <div class="post-thumbnail">
+                    <img src="{{ post.thumbnail.src }}" alt="{{ post.title|e('html_attr') }}" itemprop="image">
+                </div>
+            {% endif %}
+            {% if post.get_field('url') %}
+            <dl>
+                <dt>{{ __("View the site here:", THEMENAME) }}</dt>
+                <dd><a href="{{ post.get_field('url') }}" target="_blank" itemprop="mainEntityOfPage">{{ post.get_field('url') }}</a></dd>
+            </dl>
+            {% endif %}
+            <div class="post-content" itemprop="description">
+                {{ post.content }}
+            </div>
+
+            {% if post.get_field('credits') %}
+                <h4>{{ __("Credits", THEMENAME) }}</h4>
+                <dl class="project-credits">
+                {% for credit in post.get_field('credits') %}
+                    <dt>{{ credit.role }}</dt>
+                    <dd><a href="{{ credit.website }}" target="_blank">{{ credit.name }}</a></dd>
+                {% endfor %}
+                </dl>
+            {% endif %}
+
             {% include('post-tags.twig') with {'taxonomy': 'technology', 'title': "Technologies"} %}
             {% include('post-tags.twig') %}
             {% include('post-nav.twig') %}
             {% do action('after_single_project_content') %}
-        {% endblock %}
-    {% endembed %}
+            {% include 'projects-slick.twig' with { slides: related_posts, options: {"dots":true,"arrows":true,"slidesToShow":1,"slidesToScroll":1,"adaptiveHeight":true,"autoplay":true,"responsive":[{"breakpoint":480,"settings":{"dots":false,"arrows":false}}]}} %}
+        </div>
+    </article>
 {% endblock %}

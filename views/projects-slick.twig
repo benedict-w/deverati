@@ -4,7 +4,7 @@
         <div>
             <a href="{{ slide.link }}" title="{{ slide.post_title|e('html_attr') }}">
                 {% set thumbnail = function('is_a', slide, 'TimberImage') ? slide : slide.thumbnail %}
-                <img src="{{ thumbnail.src|resize(slide.width)|relative|e('html_attr') }}" alt="{{ slide.post_title|e('html_attr') }}" class="img-responsive">
+                <img src="{{ thumbnail.src|resize(480)|relative|e('html_attr') }}" alt="{{ slide.post_title|e('html_attr') }}" class="img-responsive">
             </a>
             <div class="slick-caption">
                 <h3 class="slick-title">
@@ -16,22 +16,17 @@
                     </a>
                     {% endif %}
                 </h3>
-                {% if slide.content %}
-                    <div class="slick-content">
-                        {{ slide.content }}
-                        <ul class="project-technologies">
-                            {% for technology in slide.technologies %}
-                                <li>
-                                    <a href="{{ technology.link }}"><span class="fa fa-hashtag"></span> {{ technology.title }}</a>
-                                </li>
-                            {% endfor %}
-                        </ul>
-                    </div>
-                {% endif %}
+                <div class="slick-content">
+                    {{ slide.get_preview() }}
+                    <ul class="project-technologies">
+                        {% for technology in slide.technologies %}
+                            <li>
+                                <a href="{{ technology.link }}"><span class="fa fa-hashtag"></span> {{ technology.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
             </div>
         </div>
     {% endfor %}
 </div>
-
-<a href="/projects" class="btn btn-default">See more projects</a>
-

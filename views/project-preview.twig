@@ -3,6 +3,10 @@
         <h2 class="project-title">
             <a href="{{ post.link|e('html_attr') }}" rel="bookmark">{{ post.title }}</a>
         </h2>
+        {%  if post.terms('project_type') %}
+        {% set separator = ' &ndash; ' %}
+        <h4>{{ fn('get_ancestors', post.terms('project_type').id, 'project_type', 'project_type')|join(separator) }}</h4>
+        {% endif %}
     </header>
     <div class="project-body">
         {% if post.thumbnail %}
